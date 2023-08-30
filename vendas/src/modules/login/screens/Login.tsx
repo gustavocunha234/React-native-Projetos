@@ -15,11 +15,12 @@ const Login = () => {
     return (
         <View>
            <ContainerLogin>
-            <Input placeholder="Digite seu Email: " title="Email" />
+            <Input errorMessage="Usuário ou senha invalidos" placeholder="Digite seu Email: " title="Email" />
             <Button  type={theme.buttons.buttonsTheme.primary} 
                      margin="16px"
                      title="ENTRAR"
                      onPress={handleOnPress}>
+                     
                     
                     </Button>
             

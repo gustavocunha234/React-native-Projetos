@@ -18,3 +18,7 @@ export const pinkTheme = {
     pink80: '#C833D8',
 };
 
+export const OrangeTheme = {
+    orange80: '#E7774D',
+};
+
