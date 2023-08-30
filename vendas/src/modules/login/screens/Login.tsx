@@ -1,9 +1,9 @@
 import {View} from "react-native"
 import {ContainerLogin} from "../Styles/login.style";
 import Input from "../../../shared/components/input/input";
-import Text from "../../../shared/components/text/Text";
 import Button from "../../../shared/components/button/Button";
 import { theme } from "../../../shared/themes/themes";
+import { Icon } from "../../../shared/components/icon/Icon";
 
 
 const Login = () => {
@@ -15,7 +15,9 @@ const Login = () => {
     return (
         <View>
            <ContainerLogin>
-            <Input errorMessage="Usuário ou senha invalidos" placeholder="Digite seu Email: " title="Email" />
+            <Icon name="home" />
+            <Input margin='0px 0px 8px 0px' placeholder="Digite seu Email: " title="Email" />
+            <Input secureTextEntry placeholder="Digite sua Senha: " title="Senha" />
             <Button  type={theme.buttons.buttonsTheme.primary} 
                      margin="16px"
                      title="ENTRAR"
