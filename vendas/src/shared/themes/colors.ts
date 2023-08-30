@@ -5,6 +5,7 @@ export const grayTheme = {
 
 export const neutralTheme = {
     white: '#fff',
+    black: '#262824'
 };
 export const  mainTheme = {
     primary: '#8C29B0',
