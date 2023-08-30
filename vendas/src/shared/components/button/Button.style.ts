@@ -12,6 +12,7 @@ export const ButtonContainer = styled.TouchableOpacity<ButtonContainerProps>`
         height: 48px;
         justify-content: center;
         align-items: center;
+        flex-direction: row;
         border-radius: 4px;
         ${(props: any) => (props.margin ? `margin: ${props.margin};` : '')}
         
@@ -22,6 +23,7 @@ export const GradientButton = styled(LinearGradient)<ButtonContainerProps>`
         height: 100%;
         justify-content: center;
         align-items: center;
+        flex-direction: row;
         border-radius: 4px;
         ${(props: any) => (props.margin ? `margin: ${props.margin};` : '')}
 `;
@@ -35,4 +37,16 @@ export const ButtonSecondary = styled(ButtonContainer)<ButtonContainerProps>`
         border-width: 1px;
         border-color: ${theme.colors.mainTheme.primary};
        
+`;
+
+export const ButtonDisabled = styled(ButtonContainer)<ButtonContainerProps>`
+
+        background-color: ${theme.colors.grayTheme.gray100};
+
+`;
+
+
+export const ActivityIndicatorButton = styled.ActivityIndicator`
+        margin-left: 8px;
+
 `;
