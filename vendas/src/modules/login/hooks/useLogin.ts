@@ -1,26 +1,20 @@
 import { useState } from "react"
 import { NativeSyntheticEvent, TextInputChangeEventData } from "react-native";
 import  { ConnectionAPIPost } from "../../../shared/functions/connection/connectionAPI";
+import { useRequest } from "../../../shared/hooks/useRequest";
 
 export const useLogin = () => {
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
-    const [loading, setloading] = useState<boolean>(false);
-    const [errorMessage, setErrorMessage] = useState<string>('');
+    const {authRequest, loading, setErrorMessage, errorMessage} = useRequest();
 
 
 
     const handleOnPress = async () => {
-       setloading(true);
-       const resultAxios = await ConnectionAPIPost('http://10.0.0.130:8080/auth', {
-        email,
-        password,
-       })
-       .catch(() => {
-        setErrorMessage('Usuario ou senha inválidos');
-       });
-       setloading(false);
-       console.log('Logado com sucesso');
+        authRequest({
+            email,
+            password,
+        });
     };
 
     const handleOnChangeEmail = (event: NativeSyntheticEvent<TextInputChangeEventData>) => {
