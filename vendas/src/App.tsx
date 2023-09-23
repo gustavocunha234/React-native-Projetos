@@ -2,8 +2,8 @@
 import { SafeAreaView} from 'react-native';
 
 import Login from './modules/login';
-import store from './store'
-import { Provider } from 'react-redux'
+import store from './store';
+import { Provider } from 'react-redux';
 
 
 

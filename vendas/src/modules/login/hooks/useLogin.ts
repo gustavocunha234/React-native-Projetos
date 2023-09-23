@@ -3,16 +3,14 @@ import { NativeSyntheticEvent, TextInputChangeEventData } from "react-native";
 import { useRequest } from "../../../shared/hooks/useRequest";
 
 
-export const useLogin = () => {
 
-  
+export const useLogin = () => {
+   
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const {authRequest, loading, setErrorMessage, errorMessage} = useRequest();
 
     
-
-
 
     const handleOnPress = async () => {
         authRequest({
