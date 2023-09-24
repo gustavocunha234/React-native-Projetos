@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ConnectionAPIPost } from "../functions/connection/connectionAPI";
+import ConnectionAPI, { ConnectionAPIPost, MethodType } from "../functions/connection/connectionAPI";
 import { ReturnLogin } from "../types/returnLogin";
 import { RequestLogin } from "../types/requestLogin";
 
@@ -9,13 +9,57 @@ import { NavigationContainer, NavigationProp, ParamListBase, useNavigation } fro
 import { MenuUrl } from "../enums/MenuUrl.enum";
 import { setAuthorizationToken } from "../functions/connection/auth";
 
+
+interface requestProps <T>{
+    url: string;
+    method: MethodType;
+    saveGlobal?:(object: T) => void;
+    body?: unknown;
+    message?: string
+}
+
 export const useRequest = () => {
-    
+
     const {setUser} = useUserReducer();
     const {reset} = useNavigation<NavigationProp<ParamListBase>>();
     const {setModal} = useGlobalReducer();
     const [loading, setloading] = useState<boolean>(false);
     const [errorMessage, setErrorMessage] = useState<string>('');
+
+
+    const request = async <T>({url,method, saveGlobal, body, message}: requestProps<T>): Promise<T | undefined> => {
+
+        setloading(true);
+        const returnObject: T | undefined = await ConnectionAPI.connect<T>(url, method, body)
+        .then((result) => {
+            if(saveGlobal){
+                saveGlobal(result)
+            }
+
+            if(message){
+                setModal({
+                    visible:true,
+                    title: 'Sucesso',
+                    text: message,
+                });
+            }
+
+            return result;
+        })
+        .catch((error: Error) => {
+            setModal({
+                visible:true,
+                title: 'Erro',
+                text: error.message,
+            });
+            return undefined;
+        });
+
+        setloading(false);
+        return returnObject;
+
+    }
+
 
     const authRequest = async (body: RequestLogin) => {
         setloading(true);
@@ -43,6 +87,7 @@ export const useRequest = () => {
     return {
         loading,
         errorMessage,
+        request,
         authRequest,
         setErrorMessage,
     };     
