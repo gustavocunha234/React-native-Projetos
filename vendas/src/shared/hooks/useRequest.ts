@@ -7,6 +7,7 @@ import { useUserReducer } from "../../store/reducers/userReducer/useUserReducer"
 import { useGlobalReducer } from "../../store/reducers/globalReducer/useGlobalReducer";
 import { NavigationContainer, NavigationProp, ParamListBase, useNavigation } from "@react-navigation/native";
 import { MenuUrl } from "../enums/MenuUrl.enum";
+import { setAuthorizationToken } from "../functions/connection/auth";
 
 export const useRequest = () => {
     
@@ -20,6 +21,7 @@ export const useRequest = () => {
         setloading(true);
         await ConnectionAPIPost<ReturnLogin>('http://10.0.0.130:8080/auth', body)
         .then((result) => {
+         setAuthorizationToken(result.accessToken)
          setUser(result.user);
          reset({
             index: 0,
