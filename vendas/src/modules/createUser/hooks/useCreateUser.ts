@@ -6,6 +6,9 @@ import { MethodEnum } from "../../../shared/enums/method.enum";
 import { NavigationProp, ParamListBase, useNavigation } from "@react-navigation/native";
 import { useRequest } from "../../../shared/hooks/useRequest";
 import { MenuUrl } from "../../../shared/enums/MenuUrl.enum";
+import { validateCpf } from "../../../shared/functions/cpf";
+import { validatePhone } from "../../../shared/functions/phone";
+import { validateEmail } from "../../../shared/functions/email";
 
 
 export const useCreateUser = () => {
@@ -24,9 +27,9 @@ export const useCreateUser = () => {
 
     useEffect(() => {
         if(createUser.name !== '' &&
-           createUser.phone !== '' &&
-           createUser.email !== '' &&
-           createUser.cpf !== '' &&
+           validatePhone(createUser.phone) &&
+           validateEmail(createUser.email) &&
+           validateCpf(createUser.cpf) &&
            createUser.password !== '' &&
            createUser.password === createUser.confirmPassword
         ) {
