@@ -5,7 +5,7 @@ import { useCreateUser } from "../hooks/useCreateUser"
 
 
 const CreateUser = () => {
-    const {createUser, loading, handleOnChangeInput, handleCreateUser} = useCreateUser();
+    const {createUser, disabled, loading, handleOnChangeInput, handleCreateUser} = useCreateUser();
 
     return(
         <CreateUserContainer>
@@ -15,7 +15,7 @@ const CreateUser = () => {
             <Input value={createUser.cpf} onChange={(event) => handleOnChangeInput(event, 'cpf')} margin='0px 0px 16px 0px' placeholder="Digite" title="CPF: " />
             <Input value={createUser.password} onChange={(event) => handleOnChangeInput(event, 'password')} margin='0px 0px 16px 0px' placeholder="Digite" title="Senha: " />
             <Input value={createUser.confirmPassword} onChange={(event) => handleOnChangeInput(event, 'confirmPassword')} margin='0px 0px 16px 0px' placeholder="Digite" title="Confirmar senha: " />
-            <Button onPress={handleCreateUser} loading={loading} margin='0px 0px 32px 0px' title="Criar usuário" />
+            <Button disabled={disabled} onPress={handleCreateUser} loading={loading} margin='0px 0px 32px 0px' title="Criar usuário" />
         </CreateUserContainer>
     ) 
 }
