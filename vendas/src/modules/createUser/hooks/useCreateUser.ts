@@ -9,6 +9,7 @@ import { MenuUrl } from "../../../shared/enums/MenuUrl.enum";
 import { validateCpf } from "../../../shared/functions/cpf";
 import { validatePhone } from "../../../shared/functions/phone";
 import { validateEmail } from "../../../shared/functions/email";
+import { removeSpecialCharacters } from "../../../shared/functions/characters";
 
 
 export const useCreateUser = () => {
@@ -43,7 +44,11 @@ export const useCreateUser = () => {
         const resultCreateUser = await request({
             url: URL_USER,
             method: MethodEnum.POST,
-            body: createUser,
+            body: {
+                ...createUser,
+                phone: removeSpecialCharacters(createUser.phone),
+                cpf: removeSpecialCharacters(createUser.cpf)
+            },
             message: 'Usuário cadastrado com sucesso!'
         })
 
