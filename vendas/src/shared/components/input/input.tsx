@@ -1,10 +1,10 @@
-import { NativeSyntheticEvent, TextInputChangeEventData, TextInputProps, View } from "react-native"
+import { NativeSyntheticEvent, TextInput, TextInputChangeEventData, TextInputProps, View } from "react-native"
 import { ContainerInput, IconEye } from "./input.style"
 import {DisplayFlexColumn} from '../globalStyles/globalView.style'
 import Text from "../text/Text";
 import { textTypes } from "../text/textTypes";
 import { theme } from "../../themes/themes";
-import { useState } from "react";
+import { forwardRef, useState } from "react";
 import { Icon } from "../icon/Icon";
 import { insertMaskInCpf } from "../../functions/cpf";
 import { insertMaskInPhone } from "../../functions/phone";
@@ -19,7 +19,9 @@ interface InputProps extends TextInputProps {
 
 }
 
-const Input = ({ margin, secureTextEntry,errorMessage, title, onChange, type, ...props}: InputProps) => {
+const Input = forwardRef<TextInput, InputProps> (
+
+({ margin, secureTextEntry,errorMessage, title, onChange, type, ...props}: InputProps, ref) => {
 
     const [currentSecure, setCurrentSecure] = useState<boolean>(!!secureTextEntry);
 
@@ -62,7 +64,7 @@ const Input = ({ margin, secureTextEntry,errorMessage, title, onChange, type, ..
             )}
 
         <View>
-        <ContainerInput  hasSecureTextEntry={secureTextEntry} secureTextEntry={currentSecure} isError={errorMessage} onChange={handleOnChange} {...props}  />
+        <ContainerInput  hasSecureTextEntry={secureTextEntry} secureTextEntry={currentSecure} isError={errorMessage} onChange={handleOnChange} ref={ref} {...props}  />
          {secureTextEntry && <IconEye onPress={handleOnClickEye} name={currentSecure ? 'eye' : 'eye-blocked'} size={20}/>}
         </View>
         {errorMessage && (
@@ -72,6 +74,6 @@ const Input = ({ margin, secureTextEntry,errorMessage, title, onChange, type, ..
         )}
         </DisplayFlexColumn>
     );
-}
+})
 
 export default Input
