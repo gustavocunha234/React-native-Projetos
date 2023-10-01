@@ -12,3 +12,4 @@ export const DisplayFlexColumn = styled.View<DisplayProps>`
   
   margin: ${(props: any) => (props.margin ? props.margin : '0px')};
 `;
+

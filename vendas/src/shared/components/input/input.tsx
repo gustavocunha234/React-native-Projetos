@@ -1,11 +1,13 @@
-import { TextInputProps, View } from "react-native"
+import { NativeSyntheticEvent, TextInput, TextInputChangeEventData, TextInputProps, View } from "react-native"
 import { ContainerInput, IconEye } from "./input.style"
 import {DisplayFlexColumn} from '../globalStyles/globalView.style'
 import Text from "../text/Text";
 import { textTypes } from "../text/textTypes";
 import { theme } from "../../themes/themes";
-import { useState } from "react";
+import { forwardRef, useState } from "react";
 import { Icon } from "../icon/Icon";
+import { insertMaskInCpf } from "../../functions/cpf";
+import { insertMaskInPhone } from "../../functions/phone";
 
 
 interface InputProps extends TextInputProps {
@@ -13,12 +15,41 @@ interface InputProps extends TextInputProps {
     errorMessage?: string;
     secureTextEntry?: boolean;
     margin?: string;
+    type?: 'cel-phone' | 'cpf';
 
 }
 
-const Input = ({ margin, secureTextEntry,errorMessage, title, ...props}: InputProps) => {
+const Input = forwardRef<TextInput, InputProps> (
+
+({ margin, secureTextEntry,errorMessage, title, onChange, type, ...props}: InputProps, ref) => {
 
     const [currentSecure, setCurrentSecure] = useState<boolean>(!!secureTextEntry);
+
+    const handleOnChange = (event: NativeSyntheticEvent<TextInputChangeEventData>) => {
+       if(onChange) {
+        let text = event.nativeEvent.text;
+        switch (type) {
+            case 'cpf':
+                text = insertMaskInCpf(text);
+                break;
+            case 'cel-phone':
+                text = insertMaskInPhone(text);
+                break;
+        
+            default:
+                text = event.nativeEvent.text
+                break;
+        }
+    
+        onChange({
+            ...event,
+            nativeEvent: {
+             ...event.nativeEvent,
+                text,
+            },
+        });
+      }   
+    };
 
     const handleOnClickEye = () => {
         setCurrentSecure((current) => !current);
@@ -33,7 +64,7 @@ const Input = ({ margin, secureTextEntry,errorMessage, title, ...props}: InputPr
             )}
 
         <View>
-        <ContainerInput  hasSecureTextEntry={secureTextEntry} secureTextEntry={currentSecure} isError={errorMessage} {...props} />
+        <ContainerInput  hasSecureTextEntry={secureTextEntry} secureTextEntry={currentSecure} isError={errorMessage} onChange={handleOnChange} ref={ref} {...props}  />
          {secureTextEntry && <IconEye onPress={handleOnClickEye} name={currentSecure ? 'eye' : 'eye-blocked'} size={20}/>}
         </View>
         {errorMessage && (
@@ -43,6 +74,6 @@ const Input = ({ margin, secureTextEntry,errorMessage, title, ...props}: InputPr
         )}
         </DisplayFlexColumn>
     );
-}
+})
 
 export default Input

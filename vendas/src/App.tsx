@@ -1,21 +1,19 @@
 
-import { SafeAreaView } from 'react-native';
-
-import Home from './modules/home/Home';
-
-
+import { Provider } from 'react-redux';
+import Navigation from './Navigation';
+import GlobalModal from './shared/components/modal/globalModal/GlobalModal';
+import store from './store';
 
 
 const App = () => {
 
   return (
-    <SafeAreaView>
-      <Home />
-    </SafeAreaView>
+    <Provider store={store}>
+      <GlobalModal />
+      <Navigation />
+    </Provider>
 
   );
 };
-
-
 
 export default App;

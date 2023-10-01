@@ -1,27 +1,29 @@
-import axios from "axios";
 import { useState } from "react"
 import { NativeSyntheticEvent, TextInputChangeEventData } from "react-native";
+import { useRequest } from "../../../shared/hooks/useRequest";
+import { NavigationProp, ParamListBase, useNavigation } from "@react-navigation/native";
+import { MenuUrl } from "../../../shared/enums/MenuUrl.enum";
+
+
 
 export const useLogin = () => {
+    const {navigate} = useNavigation<NavigationProp<ParamListBase>>();
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
-    const [loading, setloading] = useState<boolean>(false);
-    const [errorMessage, setErrorMessage] = useState<string>('');
+    const {authRequest, loading, setErrorMessage, errorMessage} = useRequest();
 
-
+    
 
     const handleOnPress = async () => {
-       setloading(true);
-       const resultAxios = await axios.post('http://10.0.0.130:8080/auth', {
-        email,
-        password,
-       })
-       .catch(() => {
-        setErrorMessage('Usuario ou senha inválidos');
-       });
-       setloading(false);
-       console.log('Logado com sucesso');
+        authRequest({
+            email,
+            password,
+        });
     };
+
+    const handleGoToCreateUser = () => {
+            navigate(MenuUrl.CREATE_USER)   
+    }
 
     const handleOnChangeEmail = (event: NativeSyntheticEvent<TextInputChangeEventData>) => {
         setErrorMessage('');
@@ -40,7 +42,8 @@ export const useLogin = () => {
         errorMessage,
         handleOnPress,
         handleOnChangeEmail,
-        handleOnChangePassword
+        handleOnChangePassword,
+        handleGoToCreateUser,
 
 
     }

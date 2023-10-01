@@ -1,9 +1,13 @@
-import {View} from "react-native"
+import {TouchableOpacity, View} from "react-native"
 import {ContainerLogin, ImageLogo} from "../Styles/login.style";
 import Input from "../../../shared/components/input/input";
 import Button from "../../../shared/components/button/Button";
 import { theme } from "../../../shared/themes/themes";
 import { useLogin } from "../hooks/useLogin";
+import Text from "../../../shared/components/text/Text";
+import { textTypes } from "../../../shared/components/text/textTypes";
+
+
 
 
 const Login = () => {
@@ -15,9 +19,12 @@ const Login = () => {
         errorMessage,
         handleOnPress,
         handleOnChangeEmail,
-        handleOnChangePassword
+        handleOnChangePassword,
+        handleGoToCreateUser,
     } = useLogin();
 
+
+    
 
     return (
         <View>
@@ -38,9 +45,13 @@ const Login = () => {
             placeholder="Digite sua Senha: " 
             title="Senha"
             onChange={handleOnChangePassword} />
+
+            <TouchableOpacity onPress={handleGoToCreateUser}>
+            <Text margin="16px" type={textTypes.PARAGRAPH_SEMI_BOLD} color={theme.colors.mainTheme.primary}>Cadastrar Usuário</Text>
+            </TouchableOpacity>
             <Button 
              type={theme.buttons.buttonsTheme.primary} 
-             margin="16px"
+             
              title="ENTRAR"
              onPress={handleOnPress}>
                     </Button>
