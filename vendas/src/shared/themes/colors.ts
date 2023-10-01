@@ -4,10 +4,10 @@ export const grayTheme = {
 };
 
 export const neutralTheme = {
-    white: '#fff',
+    white: '#E6E8E3',
     black: '#262824'
 };
-export const  mainTheme = {
+export const mainTheme = {
     primary: '#8C29B0',
 };
 export const purpleTheme = {

@@ -1,7 +1,7 @@
 
-import { SafeAreaView} from 'react-native';
+import { SafeAreaView } from 'react-native';
 
-import Login from './modules/login';
+import Home from './modules/home/Home';
 
 
 
@@ -10,9 +10,9 @@ const App = () => {
 
   return (
     <SafeAreaView>
-      <Login />
+      <Home />
     </SafeAreaView>
-    
+
   );
 };
 
