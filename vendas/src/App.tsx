@@ -1,9 +1,8 @@
 
-import { SafeAreaView} from 'react-native';
-import store from './store';
 import { Provider } from 'react-redux';
-import GlobalModal from './shared/components/modal/globalModal/GlobalModal';
 import Navigation from './Navigation';
+import GlobalModal from './shared/components/modal/globalModal/GlobalModal';
+import store from './store';
 
 
 const App = () => {
@@ -13,7 +12,7 @@ const App = () => {
       <GlobalModal />
       <Navigation />
     </Provider>
-    
+
   );
 };
 
