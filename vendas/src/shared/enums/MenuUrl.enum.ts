@@ -3,5 +3,6 @@ export enum MenuUrl {
     LOGIN = 'Login',
     HOME = 'Home',
     CREATE_USER = 'CreateUser',
-    CREATE_PET = 'CreatePet'
+    CREATE_PET = 'CreatePet',
+    CHAT = 'Chat',
 }
