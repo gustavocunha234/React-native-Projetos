@@ -24,27 +24,6 @@ const Home = () => {
             <CategoryFilterTitle>Gato</CategoryFilterTitle>
           </CategoryFilterBox>
 
-          <CategoryFilterBox>
-            <CategoryFilterIconBox>
-              <Image source={require("../../assets/images/bird.png")} />
-            </CategoryFilterIconBox>
-            <CategoryFilterTitle>Passaro</CategoryFilterTitle>
-          </CategoryFilterBox>
-
-          <CategoryFilterBox>
-            <CategoryFilterIconBox>
-              <Image source={require("../../assets/images/hamster.png")} />
-            </CategoryFilterIconBox>
-            <CategoryFilterTitle>Hasmter</CategoryFilterTitle>
-          </CategoryFilterBox>
-
-          <CategoryFilterBox>
-            <CategoryFilterIconBox>
-              <Image source={require("../../assets/images/Bunny.png")} />
-            </CategoryFilterIconBox>
-            <CategoryFilterTitle>Coelho</CategoryFilterTitle>
-          </CategoryFilterBox>
-
         </Header>
         <MainTitle>🐱Me Adota🐶</MainTitle>
 
