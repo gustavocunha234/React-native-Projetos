@@ -2,12 +2,12 @@ import { useRef } from "react"
 import { TextInput } from "react-native"
 import Button from "../../../shared/components/button/Button"
 import Input from "../../../shared/components/input/input"
-import { useCreateUser } from "../hooks/useCreatePet"
+import { useCreatePet } from "../hooks/useCreatePet"
 import { CreatePetContainer } from "../styles/createPet.style"
 
 
 const CreatePet = () => {
-  const { createPet, disabled, loading, handleOnChangeInput, handleCreatePet } = useCreateUser();
+  const { createPet, disabled, loading, handleOnChangeInput, handleCreatePet } = useCreatePet();
 
   const speciesInput = useRef<TextInput>(null);
   const genderInput = useRef<TextInput>(null);
@@ -25,7 +25,7 @@ const CreatePet = () => {
       <Input value={createPet.address} onChange={(event) => handleOnChangeInput(event, 'address')} margin='0px 0px 16px 0px' placeholder="Digite" title="Endereço: " ref={addressInput} onSubmitEditing={() => addressInput?.current?.focus()} keyboardType="number-pad" />
       <Input value={createPet.reason} onChange={(event) => handleOnChangeInput(event, 'reason')} margin='0px 0px 16px 0px' placeholder="Digite" title="Motivo: " ref={reasonInput} onSubmitEditing={() => reasonInput?.current?.focus()} keyboardType="number-pad" />
 
-      <Button disabled={disabled} onPress={() => null} loading={loading} margin='0px 0px 32px 0px' title="Cadastrar pet" />
+      <Button disabled={disabled} onPress={handleCreatePet} loading={loading} margin='0px 0px 32px 0px' title="Cadastrar pet" />
     </CreatePetContainer>
   )
 }
