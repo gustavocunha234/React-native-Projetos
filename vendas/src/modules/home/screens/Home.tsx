@@ -1,44 +1,43 @@
-import { FlatList, Image, TouchableOpacity, View } from "react-native";
-import { AnimalImage, CategoryFilterBox, CategoryFilterIconBox, CategoryFilterTitle, ContainerHome, Header, ListAnimalDescriptionBox, ListAnimalDescriptionInfo, ListAnimalMainBox, ListAnimalTitle, ListAnimalView, MainTitle,  } from "../Styles/home.style";
-import { useAnimalReducer } from "../../../store/reducers/animalReducer/useAnimalReducer";
-import { useEffect } from "react";
-import { useRequest } from "../../../shared/hooks/useRequest";
-import { URL_ANIMAL, URL_USER } from "../../../shared/constants/urls";
-import { MethodEnum } from "../../../shared/enums/method.enum";
-import { AnimalType } from "../../../shared/types/AnimalType";
-import Text from "../../../shared/components/text/Text";
 import { NavigationProp, ParamListBase, useNavigation } from "@react-navigation/native";
-import { MenuUrl } from "../../../shared/enums/MenuUrl.enum";
+import { useEffect } from "react";
+import { FlatList, View } from "react-native";
 import AnimalsThumbail from "../../../shared/components/animalsThumbnail/AnimalsThumbnail";
+import Text from "../../../shared/components/text/Text";
+import { URL_PETS } from "../../../shared/constants/urls";
+import { MenuUrl } from "../../../shared/enums/MenuUrl.enum";
+import { MethodEnum } from "../../../shared/enums/method.enum";
+import { useRequest } from "../../../shared/hooks/useRequest";
+import { AnimalType } from "../../../shared/types/AnimalType";
+import { useAnimalReducer } from "../../../store/reducers/animalReducer/useAnimalReducer";
 
 
 
 const Home = () => {
-const {navigate } = useNavigation<NavigationProp<ParamListBase>>();
-const { request } = useRequest();
-const {animals, setAnimals} = useAnimalReducer();
+  const { navigate } = useNavigation<NavigationProp<ParamListBase>>();
+  const { request } = useRequest();
+  const { animals, setAnimals } = useAnimalReducer();
 
-useEffect(() => {
-  request<AnimalType[]>({
-    url: URL_ANIMAL,
-    method: MethodEnum.GET,
-    saveGlobal: setAnimals
-  })
-}, []);
+  useEffect(() => {
+    request<AnimalType[]>({
+      url: URL_PETS,
+      method: MethodEnum.GET,
+      saveGlobal: setAnimals
+    })
+  }, []);
 
-const handleGoToAnimal = (animal: AnimalType) => {
+  const handleGoToAnimal = (animal: AnimalType) => {
 
-  navigate(MenuUrl.DETAIL), {
-    animal,
+    navigate(MenuUrl.DETAIL), {
+      animal,
+    };
+
   };
-
-};
 
   return (
     <View>
       <Text>Home</Text>
-      <FlatList 
-       data={animals}
+      <FlatList
+        data={animals}
         renderItem={({ item }) => <AnimalsThumbail animal={item} />}
       />
     </View>

@@ -63,8 +63,10 @@ export const useRequest = () => {
 
     const authRequest = async (body: RequestLogin) => {
         setloading(true);
+
         await ConnectionAPIPost<ReturnLogin>('http://10.0.2.2:8080/auth', body)
             .then((result) => {
+
                 setAuthorizationToken(result.accessToken)
                 setUser(result.user);
                 reset({
@@ -72,7 +74,8 @@ export const useRequest = () => {
                     routes: [{ name: MenuUrl.HOME }],
                 });
             })
-            .catch(() => {
+            .catch((err: any) => {
+                console.log
                 setModal({
                     visible: true,
                     title: 'Erro',

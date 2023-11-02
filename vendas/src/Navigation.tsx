@@ -2,13 +2,13 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer, ParamListBase, RouteProp } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+import CreatePet from './modules/createPet/screens/CreatePet';
 import CreateUser from './modules/createUser';
 import Home from './modules/home/screens/Home';
 import Login from './modules/login';
 import Splash from './modules/splash';
 import { Icon } from './shared/components/icon/Icon';
 import { MenuUrl } from './shared/enums/MenuUrl.enum';
-import CreatePet from './modules/createPet/screens/CreatePet';
 import { theme } from './shared/themes/themes';
 import Detail from './modules/detail';
 

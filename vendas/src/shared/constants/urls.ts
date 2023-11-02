@@ -1,2 +1,5 @@
-export const URL_USER = 'http://10.0.0.130:8080/user';
-export const URL_ANIMAL = 'http://10.0.0.130:8080/product'; //mudar no postman por product -> animal
+export const URL_USER = 'http://10.0.2.2:8080/user'
+export const URL_PET = 'http://10.0.2.2:8080/pet'
+export const URL_PETS = 'http://10.0.2.2:8080/pet/all'
+
+

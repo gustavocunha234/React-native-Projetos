@@ -1,10 +1,11 @@
 import { useNavigation } from "@react-navigation/native";
+import { AnimalNavigationProp } from "../../../modules/detail/screens/detail";
+import { MenuUrl } from "../../enums/MenuUrl.enum";
 import { AnimalType } from "../../types/AnimalType";
 import Text from "../text/Text";
 import { textTypes } from "../text/textTypes";
+
 import { AnimalImage, AnimalsThumbnailContainer } from "./animalsThumbnail.style";
-import {AnimalNavigationProp} from "../../../modules/detail/screens/detail";
-import { MenuUrl } from "../../enums/MenuUrl.enum";
 
 interface AnimalThumbailProps {
     animal: AnimalType;
@@ -12,21 +13,22 @@ interface AnimalThumbailProps {
 
 
 
-const AnimalsThumbail = ({animal}: AnimalThumbailProps) => {
+const AnimalsThumbail = ({ animal }: AnimalThumbailProps) => {
     const { navigate } = useNavigation<AnimalNavigationProp>();
 
     const handGoToDetail = () => {
-        navigate(MenuUrl.DETAIL,  {
+        navigate(MenuUrl.DETAIL, {
             animal,
         });
     };
 
-return (
+    return (
 
- <AnimalsThumbnailContainer onPress={handGoToDetail}>
-     <AnimalImage source={{uri: animal.imagem}} />
-    <Text type={textTypes.PARAGRAPH_SMALL_REGULAR}>{animal.name}</Text>
-</AnimalsThumbnailContainer>
+        <AnimalsThumbnailContainer onPress={handGoToDetail}>
+            {/* Quando tiver upload de imagem trocar para "uri: animal.image" */}
+            <AnimalImage source={require("../../../assets/images/Pug.png")} />
+            <Text type={textTypes.PARAGRAPH_SMALL_REGULAR}>{animal.name}</Text>
+        </AnimalsThumbnailContainer>
     );
 };
 
