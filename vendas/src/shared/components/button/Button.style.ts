@@ -1,6 +1,6 @@
+import LinearGradient from 'react-native-linear-gradient';
 import styled from 'styled-components/native';
 import { theme } from '../../themes/themes';
-import LinearGradient from 'react-native-linear-gradient';
 
 
 interface ButtonContainerProps {
@@ -18,7 +18,7 @@ export const ButtonContainer = styled.TouchableOpacity<ButtonContainerProps>`
         
 `;
 
-export const GradientButton = styled(LinearGradient)<ButtonContainerProps>`
+export const GradientButton = styled(LinearGradient) <ButtonContainerProps>`
         width: 100%;
         height: 100%;
         justify-content: center;
@@ -29,7 +29,7 @@ export const GradientButton = styled(LinearGradient)<ButtonContainerProps>`
 `;
 
 
-export const ButtonSecondary = styled(ButtonContainer)<ButtonContainerProps>`
+export const ButtonSecondary = styled(ButtonContainer) <ButtonContainerProps>`
         ${(props: any) => (props.margin ? `margin: ${props.margin};` : '')}
 
         background-color: transparent;
@@ -39,7 +39,7 @@ export const ButtonSecondary = styled(ButtonContainer)<ButtonContainerProps>`
        
 `;
 
-export const ButtonDisabled = styled(ButtonContainer)<ButtonContainerProps>`
+export const ButtonDisabled = styled(ButtonContainer) <ButtonContainerProps>`
 
         background-color: ${theme.colors.grayTheme.gray100};
 

@@ -5,5 +5,5 @@ export enum MenuUrl {
     CREATE_USER = 'CreateUser',
     CREATE_PET = 'CreatePet',
     CHAT = 'Chat',
-    DETAIL = 'Detail'
+    DETAIL = 'Detalhes do animal'
 }

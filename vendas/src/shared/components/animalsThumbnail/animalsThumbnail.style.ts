@@ -3,13 +3,13 @@ import { theme } from "../../themes/themes";
 
 
 interface ContainerProps {
-    
+
 }
 
 export const AnimalsThumbnailContainer = styled.TouchableOpacity<ContainerProps>`
     height: 120px;
     border-radius: 4px;
-    width: 40px;
+    width: 220px;
     border: 1px solid ${theme.colors.grayTheme.gray80};
     padding: 8px;
 `

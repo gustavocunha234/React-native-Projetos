@@ -16,7 +16,8 @@ const Home = () => {
   const { navigate } = useNavigation<NavigationProp<ParamListBase>>();
   const { request } = useRequest();
   const { animals, setAnimals } = useAnimalReducer();
-
+  console.table(animals)
+  console.log("a")
   useEffect(() => {
     request<AnimalType[]>({
       url: URL_PETS,
