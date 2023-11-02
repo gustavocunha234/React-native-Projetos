@@ -1,10 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
-import userReducer from './reducers/userReducer';
 
+import animalReducer from './reducers/animalReducer';
+import userReducer from './reducers/userReducer';
 import globalReducer from './reducers/globalReducer';
+
 
 export const store = configureStore({
   reducer: {
+    animalReducer,
     globalReducer,
     userReducer,
     

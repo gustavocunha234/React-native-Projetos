@@ -1,20 +1,47 @@
 import { NavigationProp, ParamListBase, useNavigation } from "@react-navigation/native";
+import { useEffect } from "react";
+import { FlatList, View } from "react-native";
+import AnimalsThumbail from "../../../shared/components/animalsThumbnail/AnimalsThumbnail";
 import Text from "../../../shared/components/text/Text";
-import { logout } from "../../../shared/functions/connection/auth";
-import { View } from "react-native";
-import Button from "../../../shared/components/button/Button";
+import { URL_PETS } from "../../../shared/constants/urls";
+import { MenuUrl } from "../../../shared/enums/MenuUrl.enum";
+import { MethodEnum } from "../../../shared/enums/method.enum";
+import { useRequest } from "../../../shared/hooks/useRequest";
+import { AnimalType } from "../../../shared/types/AnimalType";
+import { useAnimalReducer } from "../../../store/reducers/animalReducer/useAnimalReducer";
+
+
 
 const Home = () => {
-    const navigation = useNavigation<NavigationProp<ParamListBase>>();
+  const { navigate } = useNavigation<NavigationProp<ParamListBase>>();
+  const { request } = useRequest();
+  const { animals, setAnimals } = useAnimalReducer();
 
-    return (
+  useEffect(() => {
+    request<AnimalType[]>({
+      url: URL_PETS,
+      method: MethodEnum.GET,
+      saveGlobal: setAnimals
+    })
+  }, []);
 
-        <View>
-            <Text>HOME</Text>
-            <Button title='SAIR' onPress={() => logout(navigation)} />
-        </View>
-    );
-    
-}
+  const handleGoToAnimal = (animal: AnimalType) => {
+
+    navigate(MenuUrl.DETAIL), {
+      animal,
+    };
+
+  };
+
+  return (
+    <View>
+      <Text>Home</Text>
+      <FlatList
+        data={animals}
+        renderItem={({ item }) => <AnimalsThumbail animal={item} />}
+      />
+    </View>
+  );
+};
 
 export default Home;

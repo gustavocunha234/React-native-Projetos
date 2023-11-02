@@ -4,12 +4,14 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import CreatePet from './modules/createPet/screens/CreatePet';
 import CreateUser from './modules/createUser';
-import Home from './modules/home/Home';
+import Home from './modules/home/screens/Home';
 import Login from './modules/login';
 import Splash from './modules/splash';
 import { Icon } from './shared/components/icon/Icon';
 import { MenuUrl } from './shared/enums/MenuUrl.enum';
 import { theme } from './shared/themes/themes';
+import Detail from './modules/detail';
+
 
 
 const Stack = createNativeStackNavigator();
@@ -26,6 +28,9 @@ const TabNavigation = () => {
       case MenuUrl.CREATE_PET:
         iconName = 'home';
         break;
+        case MenuUrl.DETAIL:
+          iconName = 'home';
+          break;
       default:
         iconName = 'profile';
         break;
@@ -65,6 +70,8 @@ const Navigation = () => {
       <Stack.Navigator>
         <Stack.Screen name={MenuUrl.SPLASH} component={Splash} options={{ headerShown: false }} />
         <Stack.Screen name={MenuUrl.LOGIN} component={Login} options={{ headerShown: false }} />
+        <Stack.Screen name={MenuUrl.DETAIL} component={Detail}
+        />
         <Stack.Screen
           name={MenuUrl.CREATE_USER}
           component={CreateUser}

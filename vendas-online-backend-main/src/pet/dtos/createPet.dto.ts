@@ -14,5 +14,11 @@ export class CreatePetDto {
   address: string;
 
   @IsString()
+  name: string;
+
+  @IsString()
+  image: string;
+
+  @IsString()
   reason: string;
 }

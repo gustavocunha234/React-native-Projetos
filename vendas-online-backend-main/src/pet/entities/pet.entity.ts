@@ -26,6 +26,12 @@ export class PetEntity {
   @Column({ name: 'reason', nullable: false })
   reason: string;
 
+  @Column({ name: 'name' })
+  name: string;
+
+  @Column({ name: 'image' })
+  image: string;
+
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;
 

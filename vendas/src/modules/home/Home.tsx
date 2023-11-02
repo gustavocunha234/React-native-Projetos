@@ -33,7 +33,10 @@ const Home = () => {
   return (
     <View>
       <ContainerHome>
-        <Image source={require("../../assets/images/MainDog.png")} width={30} height={30} />
+
+
+        <Image source={require("../../assets/images/MainDog.png")} width={5} height={5} />
+
         <Header>
           <CategoryFilterBox>
             <CategoryFilterIconBox isSelected>
