@@ -1,4 +1,4 @@
-import { Image, TouchableOpacity, View } from "react-native";
+import { FlatList, Image, TouchableOpacity, View } from "react-native";
 import { AnimalImage, CategoryFilterBox, CategoryFilterIconBox, CategoryFilterTitle, ContainerHome, Header, ListAnimalDescriptionBox, ListAnimalDescriptionInfo, ListAnimalMainBox, ListAnimalTitle, ListAnimalView, MainTitle,  } from "../Styles/home.style";
 import { useAnimalReducer } from "../../../store/reducers/animalReducer/useAnimalReducer";
 import { useEffect } from "react";
@@ -9,6 +9,7 @@ import { AnimalType } from "../../../shared/types/AnimalType";
 import Text from "../../../shared/components/text/Text";
 import { NavigationProp, ParamListBase, useNavigation } from "@react-navigation/native";
 import { MenuUrl } from "../../../shared/enums/MenuUrl.enum";
+import AnimalsThumbail from "../../../shared/components/animalsThumbnail/AnimalsThumbnail";
 
 
 
@@ -35,11 +36,11 @@ const handleGoToAnimal = (animal: AnimalType) => {
 
   return (
     <View>
-       {animals.map((animal) => (
-        <TouchableOpacity onPress={() => handleGoToAnimal(animal)}>
-        <Text>{animal.imagem}</Text>   
-        </TouchableOpacity>
-        ))}
+      <Text>Home</Text>
+      <FlatList 
+       data={animals}
+        renderItem={({ item }) => <AnimalsThumbail animal={item} />}
+      />
     </View>
   );
 };
