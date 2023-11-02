@@ -1,20 +1,34 @@
-import { NavigationProp, ParamListBase, useNavigation } from "@react-navigation/native";
+import { Image, View } from "react-native";
+import { AnimalImage, CategoryFilterBox, CategoryFilterIconBox, CategoryFilterTitle, ContainerHome, Header, ListAnimalDescriptionBox, ListAnimalDescriptionInfo, ListAnimalMainBox, ListAnimalTitle, ListAnimalView, MainTitle,  } from "../Styles/home.style";
+import { useAnimalReducer } from "../../../store/reducers/animalReducer/useAnimalReducer";
+import { useEffect } from "react";
+import { useRequest } from "../../../shared/hooks/useRequest";
+import { URL_ANIMAL, URL_USER } from "../../../shared/constants/urls";
+import { MethodEnum } from "../../../shared/enums/method.enum";
+import { AnimalType } from "../../../shared/types/AnimalType";
 import Text from "../../../shared/components/text/Text";
-import { logout } from "../../../shared/functions/connection/auth";
-import { View } from "react-native";
-import Button from "../../../shared/components/button/Button";
+
 
 const Home = () => {
-    const navigation = useNavigation<NavigationProp<ParamListBase>>();
+const { request } = useRequest();
+const {animals, setAnimals} = useAnimalReducer();
 
-    return (
+useEffect(() => {
+  request<AnimalType[]>({
+    url: URL_ANIMAL,
+    method: MethodEnum.GET,
+    saveGlobal: setAnimals
+  })
+}, []);
 
-        <View>
-            <Text>HOME</Text>
-            <Button title='SAIR' onPress={() => logout(navigation)} />
-        </View>
-    );
-    
-}
+  return (
+    <View>
+       {animals.map((animal) => (
+        <Text>{animal.imagem}</Text>
+      
+      ))}
+    </View>
+  );
+};
 
 export default Home;

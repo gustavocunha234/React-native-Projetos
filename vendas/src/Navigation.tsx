@@ -3,13 +3,14 @@ import { NavigationContainer, ParamListBase, RouteProp } from '@react-navigation
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import CreateUser from './modules/createUser';
-import Home from './modules/home/Home';
+import Home from './modules/home/screens/Home';
 import Login from './modules/login';
 import Splash from './modules/splash';
 import { Icon } from './shared/components/icon/Icon';
 import { MenuUrl } from './shared/enums/MenuUrl.enum';
 import CreatePet from './modules/createPet/screens/CreatePet';
 import { theme } from './shared/themes/themes';
+
 
 
 const Stack = createNativeStackNavigator();
@@ -26,6 +27,9 @@ const TabNavigation = () => {
       case MenuUrl.CREATE_PET:
         iconName = 'home';
         break;
+        case MenuUrl.DETAIL:
+          iconName = 'home';
+          break;
       default:
         iconName = 'profile';
         break;
@@ -72,6 +76,11 @@ const Navigation = () => {
         />
         <Stack.Screen
           name={MenuUrl.HOME}
+          component={TabNavigation}
+          options={{ headerShown: false }}
+        />
+         <Stack.Screen
+          name={MenuUrl.DETAIL}
           component={TabNavigation}
           options={{ headerShown: false }}
         />
