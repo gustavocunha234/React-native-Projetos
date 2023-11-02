@@ -11,8 +11,6 @@ interface AnimalThumbailProps {
     animal: AnimalType;
 }
 
-
-
 const AnimalsThumbail = ({ animal }: AnimalThumbailProps) => {
     const { navigate } = useNavigation<AnimalNavigationProp>();
 
@@ -22,11 +20,19 @@ const AnimalsThumbail = ({ animal }: AnimalThumbailProps) => {
         });
     };
 
+    const modifiedImageUrl = animal.image && animal.image.replace("localhost", "192.168.100.20");
     return (
 
         <AnimalsThumbnailContainer onPress={handGoToDetail}>
-            {/* Quando tiver upload de imagem trocar para "uri: animal.image" */}
-            <AnimalImage source={require("../../../assets/images/Pug.png")} />
+
+
+            {animal.image && modifiedImageUrl.startsWith('http') ? (
+                <AnimalImage source={{ uri: modifiedImageUrl }} />
+            ) : (
+                <AnimalImage source={require("../../../assets/images/Pug.png")} />
+            )}
+
+
             <Text type={textTypes.PARAGRAPH_SMALL_REGULAR}>{animal.name}</Text>
         </AnimalsThumbnailContainer>
     );

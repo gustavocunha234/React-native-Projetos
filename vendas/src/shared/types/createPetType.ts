@@ -4,4 +4,6 @@ export interface CreatePetType {
   race: string;
   address: string;
   reason: string;
+  name: string;
+  image?: string;
 }
