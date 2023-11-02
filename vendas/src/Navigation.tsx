@@ -10,6 +10,7 @@ import { Icon } from './shared/components/icon/Icon';
 import { MenuUrl } from './shared/enums/MenuUrl.enum';
 import CreatePet from './modules/createPet/screens/CreatePet';
 import { theme } from './shared/themes/themes';
+import Detail from './modules/detail';
 
 
 
@@ -69,6 +70,8 @@ const Navigation = () => {
       <Stack.Navigator>
         <Stack.Screen name={MenuUrl.SPLASH} component={Splash} options={{ headerShown: false }} />
         <Stack.Screen name={MenuUrl.LOGIN} component={Login} options={{ headerShown: false }} />
+        <Stack.Screen name={MenuUrl.DETAIL} component={Detail}
+        />
         <Stack.Screen
           name={MenuUrl.CREATE_USER}
           component={CreateUser}
@@ -76,11 +79,6 @@ const Navigation = () => {
         />
         <Stack.Screen
           name={MenuUrl.HOME}
-          component={TabNavigation}
-          options={{ headerShown: false }}
-        />
-         <Stack.Screen
-          name={MenuUrl.DETAIL}
           component={TabNavigation}
           options={{ headerShown: false }}
         />
