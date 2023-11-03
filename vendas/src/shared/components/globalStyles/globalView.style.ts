@@ -1,15 +1,13 @@
-import styled from "styled-components/native";
+import styled from 'styled-components/native';
 
-interface DisplayProps{
-    margin?: string;
+interface DisplayProps {
+  customMargin?: string;
 }
 
-
 export const DisplayFlexColumn = styled.View<DisplayProps>`
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-  
-  margin: ${(props: any) => (props.margin ? props.margin : '0px')};
-`;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 
+  margin: ${(props: any) => (props.customMargin ? props.customMargin : '0px')};
+`;

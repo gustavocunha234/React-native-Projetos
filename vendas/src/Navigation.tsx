@@ -11,6 +11,7 @@ import { Icon } from './shared/components/icon/Icon';
 import { MenuUrl } from './shared/enums/MenuUrl.enum';
 import { theme } from './shared/themes/themes';
 import Detail from './modules/detail';
+import SearchAnimal from './modules/searchAnimal';
 
 
 
@@ -28,9 +29,12 @@ const TabNavigation = () => {
       case MenuUrl.CREATE_PET:
         iconName = 'home';
         break;
-        case MenuUrl.DETAIL:
+      case MenuUrl.DETAIL:
           iconName = 'home';
           break;
+      case MenuUrl.SEARCH_ANIMAL:
+            iconName = 'search';
+            break;
       default:
         iconName = 'profile';
         break;
@@ -56,10 +60,17 @@ const TabNavigation = () => {
     >
       <Tab.Screen name={MenuUrl.HOME} component={Home} options={{ headerShown: false }} />
       <Tab.Screen
+          name={MenuUrl.SEARCH_ANIMAL}
+          component={SearchAnimal}
+          options={{ title: 'Buscar',  headerShown: false }}
+        />
+      <Tab.Screen
         name={MenuUrl.CREATE_PET}
         component={CreatePet}
         options={{ title: 'Cadastrar pet', headerShown: false }}
+
       />
+      
     </Tab.Navigator>
   );
 };

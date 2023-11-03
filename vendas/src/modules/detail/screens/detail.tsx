@@ -17,7 +17,7 @@ const Detail = () => {
 
     const { params } = useRoute<RouteProp<Record<string, DetailParams>>>();
     const { animal } = params;
-    const modifiedImageUrl = animal.image && animal.image.replace("localhost", "192.168.100.20");
+    const modifiedImageUrl = animal.image && animal.image.replace("localhost", "10.0.0.130");
 
     const handleCallPress = () => {
         const phoneUrl = `tel:${"31975139269"}`;

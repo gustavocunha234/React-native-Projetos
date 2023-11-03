@@ -20,7 +20,7 @@ const AnimalsThumbail = ({ animal }: AnimalThumbailProps) => {
         });
     };
 
-    const modifiedImageUrl = animal.image && animal.image.replace("localhost", "192.168.100.20");
+    const modifiedImageUrl = animal.image && animal.image.replace("localhost", "10.0.0.130");
     return (
 
         <AnimalsThumbnailContainer onPress={handGoToDetail}>
@@ -33,8 +33,10 @@ const AnimalsThumbail = ({ animal }: AnimalThumbailProps) => {
             )}
 
 
-            <Text type={textTypes.PARAGRAPH_SMALL_REGULAR}>{animal.name}</Text>
+            <Text type={textTypes.PARAGRAPH_BOLD}>{animal.name}</Text>
+            <Text type={textTypes.PARAGRAPH_SEMI_BOLD}>{animal.gender}</Text>
         </AnimalsThumbnailContainer>
+
     );
 };
 
