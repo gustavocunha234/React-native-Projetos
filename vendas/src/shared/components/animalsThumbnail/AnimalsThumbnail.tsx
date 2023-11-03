@@ -20,12 +20,10 @@ const AnimalsThumbail = ({ animal }: AnimalThumbailProps) => {
         });
     };
 
-    const modifiedImageUrl = animal.image && animal.image.replace("localhost", "10.0.0.130");
+    const modifiedImageUrl = animal.image && animal.image.replace("localhost", "10.0.2.2");
     return (
 
         <AnimalsThumbnailContainer onPress={handGoToDetail}>
-
-
             {animal.image && modifiedImageUrl.startsWith('http') ? (
                 <AnimalImage source={{ uri: modifiedImageUrl }} />
             ) : (

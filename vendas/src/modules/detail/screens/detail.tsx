@@ -17,7 +17,7 @@ const Detail = () => {
 
     const { params } = useRoute<RouteProp<Record<string, DetailParams>>>();
     const { animal } = params;
-    const modifiedImageUrl = animal.image && animal.image.replace("localhost", "10.0.0.130");
+    const modifiedImageUrl = animal.image && animal.image.replace("localhost", "10.0.2.2");
 
     const handleCallPress = () => {
         const phoneUrl = `tel:${"31975139269"}`;
@@ -37,6 +37,7 @@ const Detail = () => {
                 <Text style={styles.animalName}>{animal.name}</Text>
                 <Text style={styles.animalSpecies}>Especie • {animal.species}</Text>
                 <Text>Raça • {animal.race}</Text>
+                <Text>Genero • {animal.gender}</Text>
                 <Text>Encontrado no endereço • {animal.address}</Text>
                 <Text>Motivo • {animal.reason}</Text>
                 <TouchableOpacity style={styles.contactButton} onPress={handleCallPress}>
