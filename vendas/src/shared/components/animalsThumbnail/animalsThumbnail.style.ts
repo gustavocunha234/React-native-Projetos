@@ -1,5 +1,6 @@
 import styled from "styled-components/native";
 import { theme } from "../../themes/themes";
+import { Overlay } from "native-base";
 
 
 interface ContainerProps {
@@ -15,20 +16,23 @@ export const AnimalRowContainer = styled.View`
 export const AnimalsThumbnailContainer = styled.TouchableOpacity<ContainerProps>`
     width: 175px;
     height: 180px;
-    border-radius: 4px;
-    border: 2px solid ${theme.colors.neutralTheme.black};
-    padding: 7px;
+    border-radius: 5px;
+    padding: 2px;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin: ${(props: any) => props.margin || '10px'};
+    margin: ${(props: any) => props.margin || '14px'};
 `
 
 export const AnimalImage = styled.Image`
-   width: 100%;
-  height: 100px;
-  margin-bottom: 15px;
+  width: 100%;
+  height: 100%;
+  margin-bottom: 0px;
+  border-radius: 25px;
 
-  border-radius: 8px;
+`
+export const animalsTextContainer = styled.TouchableOpacity`
 
 `

@@ -13,6 +13,7 @@ export const Header = styled.View`
   display: flex;
   flex-direction: row;
   gap: 20px;
+  background-color: ${theme.colors.neutralTheme.white};
 `
 
 
@@ -21,7 +22,9 @@ export const AnimalImage = styled.Image`
   overflow: hidden;
   width: 100px;
   height: 100px;
+  
 `
 export const HomeContainer = styled.View `
   padding: 8px;
+  background-color: ${theme.colors.neutralTheme.white};
 `

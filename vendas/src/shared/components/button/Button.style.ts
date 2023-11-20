@@ -13,7 +13,7 @@ export const ButtonContainer = styled.TouchableOpacity<ButtonContainerProps>`
         justify-content: center;
         align-items: center;
         flex-direction: row;
-        border-radius: 4px;
+        border-radius: 20px;
         ${(props: any) => (props.margin ? `margin: ${props.margin};` : '')}
         
 `;
@@ -24,7 +24,7 @@ export const GradientButton = styled(LinearGradient) <ButtonContainerProps>`
         justify-content: center;
         align-items: center;
         flex-direction: row;
-        border-radius: 4px;
+        border-radius: 20px;
         ${(props: any) => (props.margin ? `margin: ${props.margin};` : '')}
 `;
 

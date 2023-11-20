@@ -103,7 +103,7 @@ const Input = forwardRef<TextInput, InputProps>(
         </View>
         {errorMessage && (
           <Text
-            margin="0px 0px 0px 8px"
+            margin="0px 0px 0px 10px"
             type={textTypes.PARAGRAPH_SMALL_SEMI_BOLD}
             color={theme.colors.OrangeTheme.orange80}
           >

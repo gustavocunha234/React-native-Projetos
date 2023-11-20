@@ -60,14 +60,9 @@ const TabNavigation = () => {
     >
       <Tab.Screen name={MenuUrl.HOME} component={Home} options={{ headerShown: false }} />
       <Tab.Screen
-          name={MenuUrl.SEARCH_ANIMAL}
-          component={SearchAnimal}
-          options={{ title: 'Buscar',  headerShown: false }}
-        />
-      <Tab.Screen
         name={MenuUrl.CREATE_PET}
         component={CreatePet}
-        options={{ title: 'Cadastrar pet', headerShown: false }}
+        options={{ title: 'Cadastrar Animal', headerShown: false }}
 
       />
       

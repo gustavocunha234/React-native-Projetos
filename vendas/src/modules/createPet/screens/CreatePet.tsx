@@ -67,8 +67,8 @@ const CreatePet = () => {
       <Image style={styles.avatar} source={{ uri: image ? image.uri : "https://www.nomnomnow.com/images/placeholder_photo_cat.png" }} />
 
       <View style={{ flexDirection: "row", gap: 8 }}>
-        <TouchableOpacity style={styles.button} onPress={() => launchImageLibrary({ mediaType: "photo" }, imagePickerCallBack)}>
-          <Text style={styles.buttonText}>Escolher imagem</Text>
+        <TouchableOpacity style={styles.button}  onPress={() => launchImageLibrary({ mediaType: "photo" }, imagePickerCallBack)}>
+          <Text style={styles.buttonText} >Escolher imagem</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.button} onPress={() => launchCamera({ mediaType: "photo" }, imagePickerCallBack)}>
           <Text style={styles.buttonText}>Tirar foto</Text>
@@ -76,7 +76,8 @@ const CreatePet = () => {
       </View>
 
 
-      <Button disabled={disabled} onPress={handlePetSubmission} loading={loading} margin='0px 0px 32px 0px' title="Cadastrar pet" />
+      <Button style={styles.Button} disabled={disabled} onPress={handlePetSubmission} loading={loading} margin='0px 0px 32px 0px' title="Cadastrar pet" />
+      
     </CreatePetContainer>
   )
 }
@@ -85,21 +86,45 @@ const styles = StyleSheet.create({
   button: {
     width: 150,
     height: 50,
-    borderRadius: 3,
-    backgroundColor: "#7159c1",
+    borderRadius: 20,
+    backgroundColor: "#ffa200",
     justifyContent: "center",
     alignItems: "center",
     marginBottom: 12
   },
   buttonText: {
-    color: "#fff"
+    color: "#fff",
+    fontSize: 15,
+    fontWeight: 'bold',
   },
+
   avatar: {
     width: 100,
     height: 100,
     borderRadius: 50,
     marginBottom: 20
-  }
+  },
+  Button: {
+    marginTop: 10,
+        height: 45,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 30,
+        backgroundColor: '#068003',
+  },
+  buttonContainer: {
+    marginTop: 10,
+    height: 45,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 20,
+    width: 250,
+    borderRadius: 30,
+    backgroundColor: '#00BFFF',
+  },
+
 })
 
 export default CreatePet

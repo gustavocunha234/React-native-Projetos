@@ -1,6 +1,7 @@
 import styled from "styled-components/native";
 import { theme } from "../../themes/themes";
-import { Icon } from "../icon/Icon";
+import { Icon } from "native-base";
+
 
 
 export const ContainerModal = styled.View`

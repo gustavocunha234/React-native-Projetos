@@ -14,7 +14,7 @@ export const ContainerInput = styled.TextInput<ContainerInputProps>`
   padding: 8px 16px;
   background-color: ${theme.colors.neutralTheme.white};
   color: ${theme.colors.neutralTheme.black};
-  border-radius: 4px;
+  border-radius: 12px;
 
   padding-right: ${(props: any) => (props.hasSecureTextEntry ? '52px' : '16px')};
 
@@ -31,6 +31,6 @@ export const IconEye = styled(Icon)`
 
 export const IconSearch = styled(Icon)`
   position: absolute;
-  right: 16px;
-  top: 12px;
+  top: 13px;
+  left: 9px;
 `;
